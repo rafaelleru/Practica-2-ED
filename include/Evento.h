@@ -13,7 +13,7 @@ class Evento{
  public:
   Evento(int date, vector<string> events);
   Evento();
-  Evento(Evento& e);
+  Evento(const Evento& e);
   vector<string> getEvents();
   int getDate();
   void addEvents(int year, vector<string> events);
