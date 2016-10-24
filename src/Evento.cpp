@@ -9,6 +9,7 @@ Evento::Evento(){
 
 Evento::Evento(int date, vector<string> events){
   this->evento.first = date;
+  this->evento.second = events;
 }
 
 Evento::Evento(const Evento &e){
