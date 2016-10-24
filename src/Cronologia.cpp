@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Evento& getDatos(string line){
+Evento getDatos(string line){
   vector<string> events;
   Evento result;
   int year = atoi(line.substr(0, 4).c_str());
@@ -26,11 +26,11 @@ Evento& getDatos(string line){
       aux += added;
     } else {
       events.push_back(aux);
+      //cout << aux << endl;
+      //events.push_back(aux);
+      aux.clear();
     }
   }
-  cout << aux << endl;
-  events.push_back(aux);
-  aux.clear();
   
   result.addEvents(year, events);
   return result;
@@ -48,13 +48,9 @@ Cronologia::Cronologia(char* file){
   Evento aux;
   while(!toRead.eof()){
     getline(toRead, line);
-    //cout << cronologia.size() << endl
-    aux = getDatos(line);
-    //int year = aux.getDate();
-    //this->claves[year] = aux;
-    for(string s: aux.getEvents()){
-      cout << s << endl;
-    }
+    Evento aux(getDatos(line));
+    int year = aux.getDate();
+    this->claves[year] = aux;
     this->cronologia.push_back(aux);
     //cout << cronologia.size() << endl;
   }
@@ -67,8 +63,13 @@ Cronologia::Cronologia(char* file){
 */
 vector<string> Cronologia::getDateEvents(int date){
   vector<string> result;
+  Evento e(claves[date]);
+  cout << e.getDate() << endl;
   //cout << this->cronologia.size() << endl;
-  //result = *(claves[date]).getEvents(date);
+  result = e.getEvents();
+  for(string s: e.getEvents()){
+    cout << s << endl;
+  }
   return result;
 }
 
