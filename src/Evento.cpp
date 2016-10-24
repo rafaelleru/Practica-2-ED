@@ -19,7 +19,8 @@ vector<string> Evento::getEvents(){
   return this->evento.second;
 }
 
-void Evento::addEvents(vector<string> events){
+void Evento::addEvents(int year, vector<string> events){
+  this->evento.first = year;
   this->evento.second.insert(this->evento.second.end(), events.begin(), events.end());
 }
 
@@ -41,12 +42,12 @@ bool Evento::operator==(Evento& e){
 }
 
 bool Evento::operator!=(Evento& e){
-  return !(this == e);
+  return !(*this == e);
 }
 
 Evento& Evento::operator=(Evento& e){
-  if(this != e){
+  if(*this != e){
     Evento aux(e);
-    return *aux;
+    return aux;
   }
 }
