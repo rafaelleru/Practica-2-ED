@@ -4,12 +4,14 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include "../include/Evento.h"
 
 using namespace std;
 
 class Cronologia{
  private:
-  map<int, vector<string>> cronologia;
+  vector<*Evento> claves;
+  vector<Evento> cronologia;
   //  pair<int, vector<string>> parseLine(string line);
  public:
   Cronologia(char* file);
