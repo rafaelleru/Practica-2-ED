@@ -11,7 +11,7 @@ Evento::Evento(int date, vector<string> events){
   this->evento.first = date;
 }
 
-Evento::Evento(Evento &e){
+Evento::Evento(const Evento &e){
   this->evento = e.evento;
 }
 
