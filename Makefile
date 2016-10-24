@@ -13,12 +13,12 @@ documentacion:
 
 	
 # ************ Compilación de módulos ************
-$(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o
+$(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o
 	$(CXX) -o $(BIN)/pruebacronologia $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o
 $(OBJ)/pruebacronologia.o: $(OBJ)/Cronologia.o $(SRC)/pruebacronologia.cpp
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/pruebacronologia.o $(SRC)/pruebacronologia.cpp
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/pruebacronologia.o $(SRC)/pruebacronologia.cpp $(OBJ)/Cronologia.o
 $(OBJ)/Cronologia.o: $(SRC)/Cronologia.cpp $(OBJ)/Evento.o
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/Cronologia.o $(SRC)/Cronologia.cpp 
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/Cronologia.o $(SRC)/Cronologia.cpp $(OBJ)/Evento.o
 $(OBJ)/Evento.o: $(SRC)/Evento.cpp
 	$(CXX) $(CPPFLAGS) -o $(OBJ)/Evento.o $(SRC)/Evento.cpp
 
