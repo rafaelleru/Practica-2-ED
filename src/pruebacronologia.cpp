@@ -20,8 +20,8 @@ int main(int argc, char * argv[]){
   Cronologia aux(argv[1]);
   vector<string> prueba;
 
-  prueba = aux.getDateEvents(1969);
-  cout << prueba.size() << endl;
+  prueba = aux.getDateEvents(2002);
+  //cout << prueba.size() << endl;
   for(string &s: prueba){
     cout << s << endl;
   }
