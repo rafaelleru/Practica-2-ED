@@ -16,7 +16,7 @@ class Evento{
   Evento(Evento& e);
   vector<string> getEvents();
   int getDate();
-  void addEvents(vector<string> events);
+  void addEvents(int year, vector<string> events);
   void addSingleEvent(string event);
 
   //operadores
