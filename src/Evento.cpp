@@ -39,3 +39,14 @@ bool Evento::operator==(Evento& e){
 
   return igual;
 }
+
+bool Evento::operator!=(Evento& e){
+  return !(this == e);
+}
+
+Evento& Evento::operator=(Evento& e){
+  if(this != e){
+    Evento aux(e);
+    return *aux;
+  }
+}
