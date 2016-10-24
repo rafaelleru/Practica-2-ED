@@ -35,7 +35,7 @@ void Evento::addSingleEvent(string event){
 
 bool Evento::operator==(Evento& e){
   bool igual = false;
-  if ( this->evento.first == e.getDate() &&
+  if ( this->evento.first == e.evento.first &&
        this->evento.second.size() == e.evento.second.size() ){
     for(int i=0; i<this->evento.second.size(); ++i){
       if( this->evento.second.at(i) == e.evento.second.at(i) )
