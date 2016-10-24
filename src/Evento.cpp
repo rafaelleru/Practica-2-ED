@@ -3,9 +3,13 @@
 
 using namespace std;
 
+Evento::Evento(){
+  evento.first = 0;
+  evento.second = 
+}
+
 Evento::Evento(int date, vector<string> events){
   this->evento.first = date;
-  this->evento.second = events;
 }
 
 Evento::Evento(Evento &e){
@@ -22,4 +26,17 @@ void Evento::addEvents(vector<string> events){
 
 void Evento::addSingleEvent(string event){
   this->evento.second.insert(this->evento.second.end(), event);
+}
+
+bool Evento::operator==(Evento& e){
+  bool igual = false;
+  if ( this->evento.first == e.first &&
+      this->evento.second.size() == e.second.size() ){
+    for(int i=0; i<this->evento.second.size(); ++i){
+      if( this->evento.second.at(i) == e.second.at(i) )
+	igual = true;
+    }
+  }
+
+  return igual;
 }
