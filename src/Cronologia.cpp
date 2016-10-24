@@ -50,7 +50,7 @@ Cronologia::Cronologia(char* file){
   Evento aux;
   while(!toRead.eof()){
     getline(toRead, line);
-    //cout << cronologia.size() << endl;
+    //cout << cronologia.size() << endl
     aux = getDatos(line);
     int year = aux.getDate();
     this->claves[year] = aux;
