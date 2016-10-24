@@ -15,6 +15,10 @@ Evento::Evento(const Evento &e){
   this->evento = e.evento;
 }
 
+int Evento::getDate(){
+  return this->evento.first;
+}
+
 vector<string> Evento::getEvents(){
   return this->evento.second;
 }
