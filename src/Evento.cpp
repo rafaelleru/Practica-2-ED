@@ -51,8 +51,8 @@ bool Evento::operator!=(Evento& e){
 }
 
 Evento& Evento::operator=(Evento& e){
-  if(*this != e){
-    Evento aux(e);
-    return aux;
+  if(this != &e){
+    this->evento = e.evento;
+    return *this;
   }
 }
