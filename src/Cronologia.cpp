@@ -1,4 +1,5 @@
 #include "../include/Cronologia.h"
+#include "../include/Evento.h"
 #include <fstream>
 #include <map>
 #include <utility>
@@ -10,12 +11,12 @@
 
 using namespace std;
 
-pair <int, vector<string> > getDatos(string line){
+Evento& getDatos(string line){
   vector<string> events;
-  pair<int, vector<string> > result;
+  Evento result;
 
   
-  result.first = atoi(line.substr(0, 4).c_str());
+  int year = atoi(line.substr(0, 4).c_str());
   line.erase(line.begin(), line.begin() + 4);
 
   // TODO: es raro a ver si se puede hacermejor
@@ -33,8 +34,7 @@ pair <int, vector<string> > getDatos(string line){
   events.push_back(aux);
   aux.clear();
   
-  result.second = events;
-
+  result.addEvents(year, events);
   return result;
 }
 
@@ -44,14 +44,17 @@ pair <int, vector<string> > getDatos(string line){
  @param file archivo que contiene los datos de la cronologia
  */
 Cronologia::Cronologia(char* file){
+  claves = new Evento[2016];
   ifstream toRead (file);
   string line;
-  pair <int, vector<string> > aux;
+  Evento aux;
   while(!toRead.eof()){
     getline(toRead, line);
     //cout << cronologia.size() << endl;
     aux = getDatos(line);
-    this->cronologia[aux.first] = aux.second;
+    int year = aux.getDate();
+    this->claves[year] = &aux;
+    this->cronologia.push_back(aux);
     cout << cronologia.size() << endl;
   }
 }
@@ -64,7 +67,7 @@ Cronologia::Cronologia(char* file){
 vector<string> Cronologia::getDateEvents(int date){
   vector<string> result;
   //cout << this->cronologia.size() << endl;
-  result = cronologia[date];
+  //result = *(claves[date]).getEvents(date);
   return result;
 }
 
@@ -74,7 +77,7 @@ vector<string> Cronologia::getDateEvents(int date){
  @param event descripcion del evento a añadir
 */
 void Cronologia::addEventToDate(int date, string event){
-  cronologia[date].push_back(event);
+  //  cronologia[date].push_back(event);
 }
 
 
@@ -84,7 +87,7 @@ void Cronologia::addEventToDate(int date, string event){
  @param events descripcion de los eventos a añadir
 */
 void Cronologia::addMultipleEventsToDate(int date, vector<string> events){
-  cronologia[date].insert(cronologia[date].begin(), events.begin(), events.end() -1);
+  //  cronologia[date].insert(cronologia[date].begin(), events.begin(), events.end() -1);
 }
 
 

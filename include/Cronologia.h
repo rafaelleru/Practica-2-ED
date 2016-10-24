@@ -10,11 +10,12 @@ using namespace std;
 
 class Cronologia{
  private:
-  vector<*Evento> claves;
+  Evento * claves;
   vector<Evento> cronologia;
   //  pair<int, vector<string>> parseLine(string line);
  public:
   Cronologia(char* file);
+  Cronologia(vector<Evento> event);
   Cronologia();
   vector<string> getDateEvents(int date);
   void addEventToDate(int date, string event);
@@ -30,5 +31,11 @@ class Cronologia{
   bool operator!=(Cronologia& c);
   friend ostream& operator<<(ostream& o, Cronologia& c);
   friend ifstream& operator>>(ifstream& i, Cronologia& c);
+
+  //methods for use like a STL TDA
+  void resize(int newSize);
+  void erase();
+  void push_back(const Evento& event);
+  
 };
 #endif

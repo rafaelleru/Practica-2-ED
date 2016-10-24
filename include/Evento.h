@@ -21,7 +21,7 @@ class Evento{
   //operadores
   bool operator==(Evento& e);
   bool operator!=(Evento& e);
-  Evento& operator=(Evento& e);
+  Evento& operator=clear(Evento& e);
   friend ostream& operator<<(ofstream& o, Evento& e);
   friend istream& operator>>(ifstream& i, Evento& e);
 };
