@@ -53,7 +53,7 @@ Cronologia::Cronologia(char* file){
     //cout << cronologia.size() << endl;
     aux = getDatos(line);
     int year = aux.getDate();
-    this->claves[year] = &aux;
+    this->claves[year] = aux;
     this->cronologia.push_back(aux);
     cout << cronologia.size() << endl;
   }
