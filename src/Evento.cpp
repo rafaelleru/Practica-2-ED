@@ -7,6 +7,11 @@ Evento::Evento(){
   evento.first = 0;
 }
 
+Evento::Evento(int date, string event){
+  this->evento.first = date;
+  this->evento.second = event;
+}
+
 Evento::Evento(int date, vector<string> events){
   this->evento.first = date;
   this->evento.second = events;
@@ -24,8 +29,7 @@ vector<string> Evento::getEvents(){
   return this->evento.second;
 }
 
-void Evento::addEvents(int year, vector<string> events){
-  this->evento.first = year;
+void Evento::addEvents(vector<string> events){
   this->evento.second.insert(this->evento.second.end(), events.begin(), events.end());
 }
 
@@ -65,9 +69,13 @@ Evento& Evento::operator=(const Evento& e){
   return *this;
 }
 
-ostream& Evento::operator<<(ofstream& o, Evento& e){
+ostream& Evento::operator<<(ostream& o, Evento& e){
   o << e.evento.first;
   for(string s: e.evento.second)
     o << s << endl;
   return o;
+}
+
+istream& Evento::operator>>(istream& i, Evento& e){
+  
 }
