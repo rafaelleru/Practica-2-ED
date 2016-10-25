@@ -28,7 +28,7 @@ class Cronologia{
   ~Cronologia();
   Cronologia& operator+(Cronologia& c);
   Cronologia& operator-(Cronologia& c);
-  bool operator==(const Cronologia& c) const;
+  bool operator==(const Cronologia& c);
   bool operator!=(Cronologia& c);
   friend ostream& operator<<(ostream& o, Cronologia& c);
   friend ifstream& operator>>(ifstream& i, Cronologia& c);

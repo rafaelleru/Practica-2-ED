@@ -128,6 +128,11 @@ Cronologia& Cronologia::operator=(const Cronologia& c){
    el vector de claves sera igual.
    @param c la cronologia con la que se compara
 */
+bool Cronologia::operator==(const Cronologia& c){
+  return this->cronologia == c.cronologia;
+}
+
+
 
 
 ostream& operator<<(ostream& o, Cronologia& c){
