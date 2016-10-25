@@ -64,3 +64,7 @@ Evento& Evento::operator=(const Evento& e){
   }
   return *this;
 }
+
+ostream& Evento::operator<<(ofstream& o, Evento& e){
+  
+}
