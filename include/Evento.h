@@ -8,9 +8,18 @@ using namespace std;
 
 class Evento{
  private:
-  //Un evento es un par de año y acontecimientos
+  /*
+  @brief pareja de entero y vector de string
+  @param int
+  @param array de string
+  */
   pair<int, vector<string> > evento;
  public:
+  /*
+  @brief constructor de la clase Evento
+  @param int date
+  @param array de string events
+  */
   Evento(int date, vector<string> events);
   Evento(int date, string event);
   Evento();
