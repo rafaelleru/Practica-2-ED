@@ -11,7 +11,7 @@ using namespace std;
 class Cronologia{
  private:
   Evento * claves;
-  vector<Evento> cronologia;
+  vector<Evento *> cronologia;
   //  pair<int, vector<string>> parseLine(string line);
  public:
   Cronologia(char* file);

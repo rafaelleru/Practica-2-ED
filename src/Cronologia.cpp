@@ -51,9 +51,8 @@ Cronologia::Cronologia(char* file){
     Evento aux(getDatos(line));
     int year = aux.getDate();
     this->claves[year] = aux;
-    this->cronologia.push_back(aux);
-    //cout << cronologia.size() << endl;
-  }
+    this->cronologia.push_back(&aux);
+    }
 }
 
 /**
@@ -64,12 +63,7 @@ Cronologia::Cronologia(char* file){
 vector<string> Cronologia::getDateEvents(int date){
   vector<string> result;
   Evento e(claves[date]);
-  cout << e.getDate() << endl;
-  //cout << this->cronologia.size() << endl;
   result = e.getEvents();
-  for(string s: e.getEvents()){
-    cout << s << endl;
-  }
   return result;
 }
 
@@ -79,7 +73,7 @@ vector<string> Cronologia::getDateEvents(int date){
  @param event descripcion del evento a añadir
 */
 void Cronologia::addEventToDate(int date, string event){
-  //  cronologia[date].push_back(event);
+  this->claves[date].addSingleEvent(event);
 }
 
 
