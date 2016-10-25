@@ -66,5 +66,8 @@ Evento& Evento::operator=(const Evento& e){
 }
 
 ostream& Evento::operator<<(ofstream& o, Evento& e){
-  
+  o << e.evento.first;
+  for(string s: e.evento.second)
+    o << s << endl;
+  return o;
 }
