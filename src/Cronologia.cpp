@@ -111,7 +111,7 @@ void Cronologia::addMultipleEventsToDate(int date, vector<string> events){
   list<Evento>::iterator it;
   for(it = this->cronologia.begin(); it->getDate() < date; ++it){
     if(it->getDate() == date){
-      it->addEvents(date, events);
+      it->addEvents(events);
     }else{
       Evento aux(date, events);
       this->cronologia.push_back(aux);
@@ -155,7 +155,9 @@ ostream& operator<<(ostream& o, Cronologia& c){
   return o;
 }
 
-
+  size_t Cronologia::size(){
+    return this->cronologia.size();
+  }
 
   //--------------------------------------------------------------------------------
   //                                   Metodos privados
