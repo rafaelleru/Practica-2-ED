@@ -16,7 +16,7 @@ class Cronologia{
  public:
   Cronologia(char* file);
   Cronologia(vector<Evento> events);
-  Cronologia();
+  Cronologia(){};
   vector<string> getDateEvents(int date);
   void addEventToDate(int date, string event);
   void addMultipleEventsToDate(int date, vector<string> events);

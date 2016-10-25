@@ -100,6 +100,11 @@ void Cronologia::addEventToDate(int date, string event){
   }
 }
 
+void Cronologia::addEvent(Evento e){
+  this->cronologia.push_back(e);
+  this->cronologia.sort();
+}
+
 
 /**
  @brief añade nuevos acontecimiento a la fecha dada
