@@ -32,7 +32,7 @@ class Cronologia{
   bool operator==(const Cronologia& c);
   bool operator!=(Cronologia& c);
   friend ostream& operator<<(ostream& o, Cronologia& c);
-  friend ifstream& operator>>(istream& i, Cronologia& c);
+  friend istream& operator>>(istream& i, Cronologia& c);
 
   //methods for use like a STL TDA
   void resize(int newSize);
