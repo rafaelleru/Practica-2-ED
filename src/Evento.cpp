@@ -77,5 +77,6 @@ ostream& Evento::operator<<(ostream& o, Evento& e){
 }
 
 istream& Evento::operator>>(istream& i, Evento& e){
-  
+  i >> e.evento.secon;
+  return i;
 }
