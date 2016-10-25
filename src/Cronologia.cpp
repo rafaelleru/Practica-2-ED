@@ -13,7 +13,6 @@ using namespace std;
 
 Evento getDatos(string line){
   vector<string> events;
-  Evento result;
   int year = atoi(line.substr(0, 4).c_str());
   line.erase(line.begin(), line.begin() + 4);
 
@@ -32,7 +31,7 @@ Evento getDatos(string line){
     }
   }
   
-  result.addEvents(year, events);
+  Evento result(year, events);
   return result;
 }
 
