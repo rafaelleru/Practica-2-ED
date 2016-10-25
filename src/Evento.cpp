@@ -49,7 +49,7 @@ bool Evento::operator==(Evento& e){
 bool Evento::operator!=(Evento& e){
   return !(*this == e);
 }
-
+/*
 Evento& Evento::operator=(Evento& e){
   if(this != &e){
     this->evento = e.evento;
@@ -57,3 +57,4 @@ Evento& Evento::operator=(Evento& e){
   }
 }
 
+*/

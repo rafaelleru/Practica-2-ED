@@ -37,22 +37,36 @@ Evento getDatos(string line){
 }
 
 /**
- @brief Crea un nuevo objeto cronologia a partir de un archivo
- que contiene datos y fechas en el formato <fecha>#evento#evento
- @param file archivo que contiene los datos de la cronologia
+   @brief Crea un nuevo objeto cronologia a partir de un archivo
+   que contiene datos y fechas en el formato <fecha>#evento#evento
+   @param file archivo que contiene los datos de la cronologia
  */
 Cronologia::Cronologia(char* file){
-  claves = new Evento[2016];
   ifstream toRead (file);
   string line;
   Evento aux;
   while(!toRead.eof()){
     getline(toRead, line);
     Evento aux(getDatos(line));
-    int year = aux.getDate();
-    this->claves[year] = aux;
-    this->cronologia.push_back(&aux);
+    this->cronologia.push_front(aux);
     }
+}
+/**
+   @brief Crea una nueva cronologia a partir de un vector de eventos
+   @param events Los eventos que se quieren añadir a la cronologia
+*/
+Cronologia::Cronologia(vector<Evento> events){
+  for(Evento e: events){
+    this->cronologia.push_front(e);
+    this->cronologia.sort();
+  }
+}
+
+/**
+   @brief libera memoria
+*/
+
+Cronologia::~Cronologia(){
 }
 
 /**
@@ -61,10 +75,21 @@ Cronologia::Cronologia(char* file){
  @return array de string que contiene la descripcion de los eventos
 */
 vector<string> Cronologia::getDateEvents(int date){
-  vector<string> result;
-  Evento e(claves[date]);
-  result = e.getEvents();
-  return result;
+  if(date < this->cronologia.size()/2){
+    list<Evento>::iterator it = this->cronologia.begin();
+    for(it; it->getDate() <= date; ++it){
+      if(it->getDate() == date){
+	return it->getEvents();
+      }
+    }
+  }else{
+    list<Evento>::iterator it = this->cronologia.end();
+    for(it; it->getDate() < date; --it){
+      if(it->getDate() == date){
+	return it->getEvents();
+      }
+    }
+  } 
 }
 
 /**
@@ -73,7 +98,8 @@ vector<string> Cronologia::getDateEvents(int date){
  @param event descripcion del evento a añadir
 */
 void Cronologia::addEventToDate(int date, string event){
-  this->claves[date].addSingleEvent(event);
+  for(Evento e: cronologia){
+  }
 }
 
 
@@ -83,12 +109,38 @@ void Cronologia::addEventToDate(int date, string event){
  @param events descripcion de los eventos a añadir
 */
 void Cronologia::addMultipleEventsToDate(int date, vector<string> events){
-  //  cronologia[date].insert(cronologia[date].begin(), events.begin(), events.end() -1);
+  
 }
 
+/**
+   @brief Operador de asignacion
+   @param c cronologia a asignar en this
+*/
+Cronologia& Cronologia::operator=(const Cronologia& c){
+  if(this != &c){
+    this->cronologia = c.cronologia;
+  }
+  return *this;
+}
 
-  
+/**
+   @brief devuelve si los dos vectores de eventos son iguales, ya que entonces
+   el vector de claves sera igual.
+   @param c la cronologia con la que se compara
+*/
 
+
+ostream& operator<<(ostream& o, Cronologia& c){
+  for(Evento e: c.cronologia){
+    o << e.getDate() << endl;
+    for(string s: e.getEvents()){
+      o << s << endl;
+    }
+    o << endl;
+  }
+
+  return o;
+}
 
 
 

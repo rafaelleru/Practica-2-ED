@@ -3,7 +3,7 @@ INC = include
 OBJ = obj
 BIN = bin
 CXX = g++
-CPPFLAGS = -Wall -g  -I$(INC) -c
+CPPFLAGS = -Wall -g  -I$(INC) -c -std=c++11
 
 
 all: $(BIN)/pruebacronologia
@@ -11,7 +11,6 @@ all: $(BIN)/pruebacronologia
 documentacion:
 	doxygen doc/doxys/Doxyfile
 
-	
 # ************ Compilación de módulos ************
 $(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o
 	$(CXX) -o $(BIN)/pruebacronologia $(OBJ)/pruebacronologia.o $(OBJ)/Cronologia.o $(OBJ)/Evento.o

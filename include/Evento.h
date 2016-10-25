@@ -20,9 +20,11 @@ class Evento{
   void addSingleEvent(string event);
 
   //operadores
-  bool operator==(Evento& e);
-  bool operator!=(Evento& e);
-  Evento& operator=(Evento& e);
+  bool operator<(const Evento& e);
+  bool operator>(const Evento& e);
+  bool operator==(const Evento& e);
+  bool operator!=(const Evento& e);
+  Evento& operator=(const Evento& e);
   friend ostream& operator<<(ofstream& o, Evento& e);
   friend istream& operator>>(ifstream& i, Evento& e);
 };

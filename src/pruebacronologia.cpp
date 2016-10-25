@@ -25,6 +25,8 @@ int main(int argc, char * argv[]){
   for(string &s: prueba){
     cout << s << endl;
   }
+
+  cout << aux;
    /*
    Cronologia mi_cronologia;
    f>>mi_cronologia; //Cargamos en memoria, en el traductor.
