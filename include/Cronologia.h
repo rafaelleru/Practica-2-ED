@@ -11,11 +11,11 @@ using namespace std;
 class Cronologia{
  private:
   Evento * claves;
-  vector<Evento *> cronologia;
+  vector<Evento> cronologia;
   //  pair<int, vector<string>> parseLine(string line);
  public:
   Cronologia(char* file);
-  Cronologia(vector<Evento> event);
+  Cronologia(vector<Evento> events);
   Cronologia();
   vector<string> getDateEvents(int date);
   void addEventToDate(int date, string event);
