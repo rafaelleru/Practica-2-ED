@@ -75,19 +75,10 @@ Cronologia::~Cronologia(){
  @return array de string que contiene la descripcion de los eventos
 */
 vector<string> Cronologia::getDateEvents(int date){
-  if(date < this->cronologia.size()/2){
-    list<Evento>::iterator it = this->cronologia.begin();
-    for(it; it->getDate() <= date; ++it){
-      if(it->getDate() == date){
-	return it->getEvents();
-      }
-    }
-  }else{
-    list<Evento>::iterator it = this->cronologia.end();
-    for(it; it->getDate() < date; --it){
-      if(it->getDate() == date){
-	return it->getEvents();
-      }
+  list<Evento>::iterator it = this->cronologia.begin();
+  for(it; it->getDate() <= date; ++it){
+    if(it->getDate() == date){
+      return it->getEvents();
     }
   } 
 }
@@ -98,7 +89,15 @@ vector<string> Cronologia::getDateEvents(int date){
  @param event descripcion del evento a añadir
 */
 void Cronologia::addEventToDate(int date, string event){
-  for(Evento e: cronologia){
+  list<Evento>::iterator it;
+  for(it = this->cronologia.begin(); it->getDate() < date; ++it){
+    if(it->getDate() == date){
+      it->addSingleEvent(event);
+    }else{
+      Evento aux(date, event);
+      this->cronologia.push_back(aux);
+      this->cronologia.sort();
+    }
   }
 }
 
@@ -109,7 +108,16 @@ void Cronologia::addEventToDate(int date, string event){
  @param events descripcion de los eventos a añadir
 */
 void Cronologia::addMultipleEventsToDate(int date, vector<string> events){
-  
+  list<Evento>::iterator it;
+  for(it = this->cronologia.begin(); it->getDate() < date; ++it){
+    if(it->getDate() == date){
+      it->addEvents(date, events);
+    }else{
+      Evento aux(date, events);
+      this->cronologia.push_back(aux);
+      this->cronologia.sort();
+    }
+  }
 }
 
 /**
