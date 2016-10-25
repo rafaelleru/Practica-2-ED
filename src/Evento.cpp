@@ -69,14 +69,14 @@ Evento& Evento::operator=(const Evento& e){
   return *this;
 }
 
-ostream& Evento::operator<<(ostream& o, Evento& e){
-  o << e.evento.first;
-  for(string s: e.evento.second)
-    o << s <<;
-  return o;
-}
+// ostream& Evento::operator<<(ostream& o, Evento& e){
+//   o << e.evento.first;
+//   for(string s: e.evento.second)
+//     o << s <<;
+//   return o;
+// }
 
-istream& Evento::operator>>(istream& i, Evento& e){
-  i >> e.evento.secon;
-  return i;
-}
+// istream& Evento::operator>>(istream& i, Evento& e){
+//   i >> e.evento.second;
+//   return i;
+// }
