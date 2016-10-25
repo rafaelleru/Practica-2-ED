@@ -9,7 +9,7 @@ Evento::Evento(){
 
 Evento::Evento(int date, string event){
   this->evento.first = date;
-  this->evento.second = event;
+  this->evento.second.push_back(event);
 }
 
 Evento::Evento(int date, vector<string> events){
@@ -72,7 +72,7 @@ Evento& Evento::operator=(const Evento& e){
 ostream& Evento::operator<<(ostream& o, Evento& e){
   o << e.evento.first;
   for(string s: e.evento.second)
-    o << s << endl;
+    o << s <<;
   return o;
 }
 

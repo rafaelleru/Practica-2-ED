@@ -20,6 +20,7 @@ class Cronologia{
   vector<string> getDateEvents(int date);
   void addEventToDate(int date, string event);
   void addMultipleEventsToDate(int date, vector<string> events);
+  void addEvent(Evento e);
   size_t size();
   
   //Utils operators for this class
@@ -31,7 +32,7 @@ class Cronologia{
   bool operator==(const Cronologia& c);
   bool operator!=(Cronologia& c);
   friend ostream& operator<<(ostream& o, Cronologia& c);
-  friend ifstream& operator>>(ifstream& i, Cronologia& c);
+  friend ifstream& operator>>(istream& i, Cronologia& c);
 
   //methods for use like a STL TDA
   void resize(int newSize);
