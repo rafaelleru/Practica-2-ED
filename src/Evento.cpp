@@ -33,7 +33,7 @@ void Evento::addSingleEvent(string event){
   this->evento.second.insert(this->evento.second.end(), event);
 }
 
-bool Evento::operator==(Evento& e){
+bool Evento::operator==(const Evento& e){
   bool igual = false;
   if ( this->evento.first == e.evento.first &&
        this->evento.second.size() == e.evento.second.size() ){
@@ -46,15 +46,21 @@ bool Evento::operator==(Evento& e){
   return igual;
 }
 
-bool Evento::operator!=(Evento& e){
+bool Evento::operator!=(const Evento& e){
   return !(*this == e);
 }
-/*
-Evento& Evento::operator=(Evento& e){
-  if(this != &e){
-    this->evento = e.evento;
-    return *this;
-  }
+
+bool Evento::operator>(const Evento& e){
+  return this->evento.first > e.evento.first;
 }
 
-*/
+bool Evento::operator<(const Evento &e){
+  return !(*this > e);
+}
+
+Evento& Evento::operator=(const Evento& e){
+  if(this != &e){
+    this->evento = e.evento;
+  }
+  return *this;
+}
