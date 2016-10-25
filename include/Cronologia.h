@@ -20,6 +20,7 @@ class Cronologia{
   vector<string> getDateEvents(int date);
   void addEventToDate(int date, string event);
   void addMultipleEventsToDate(int date, vector<string> events);
+  void addEvent(Evento e);
   size_t size();
   
   //Utils operators for this class
