@@ -140,9 +140,6 @@ bool Cronologia::operator==(const Cronologia& c){
   return this->cronologia == c.cronologia;
 }
 
-
-
-
 ostream& operator<<(ostream& o, Cronologia& c){
   for(Evento e: c.cronologia){
     o << e.getDate() << endl;
@@ -158,6 +155,18 @@ ostream& operator<<(ostream& o, Cronologia& c){
   size_t Cronologia::size(){
     return this->cronologia.size();
   }
+
+istream& operator>>(istream& i, Cronologia& c){
+  while(!i.eof()){
+    char* line_s;
+    Cronologia aux;
+    i.getline(line_s, 1000);
+    string line = line_s;
+    aux.addEvent(getDatos(line));
+    c = aux;
+  }
+  return i;
+}
 
   //--------------------------------------------------------------------------------
   //                                   Metodos privados
