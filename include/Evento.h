@@ -12,11 +12,12 @@ class Evento{
   pair<int, vector<string> > evento;
  public:
   Evento(int date, vector<string> events);
+  Evento(int date, string event);
   Evento();
   Evento(const Evento& e);
   vector<string> getEvents();
   int getDate();
-  void addEvents(int year, vector<string> events);
+  void addEvents(vector<string> events);
   void addSingleEvent(string event);
 
   //operadores
@@ -25,8 +26,8 @@ class Evento{
   bool operator==(const Evento& e) const;
   bool operator!=(const Evento& e) const;
   Evento& operator=(const Evento& e);
-  friend ostream& operator<<(ofstream& o, Evento& e);
-  friend istream& operator>>(ifstream& i, Evento& e);
+  friend ostream& operator<<(ostream& o, Evento& e);
+  friend istream& operator>>(istream& i, Evento& e);
 };
 
 #endif
