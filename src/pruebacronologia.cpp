@@ -17,32 +17,24 @@ int main(int argc, char * argv[]){
     return 0;
   }
 
-  Cronologia aux(argv[1]);
-  vector<string> prueba;
+  //    cout << aux;
+   
+    Cronologia mi_cronologia;//(argv[1]);
 
-  prueba = aux.getDateEvents(2002);
-  //cout << prueba.size() << endl;
-  for(string &s: prueba){
-    cout << s << endl;
-  }
-
-  cout << aux;
-   /*
-   Cronologia mi_cronologia;
-   f>>mi_cronologia; //Cargamos en memoria, en el traductor.
+    f>>mi_cronologia; //Cargamos en memoria, en el traductor.
    
    int anio;
    cout<<"Dime un año a consultar:";
    cin >> anio;
    
-   vector<string> eventos = mi_cronologia.GetEventos(anio);
+   vector<string> eventos = mi_cronologia.getDateEvents(anio);
    
-   /*  Escribimos 
+   //  Escribimos 
    cout << anio << ":";
    for (int i=0;i<eventos.size(); ++i)
      cout<<eventos[i]<<';';
    cout<<endl;
 
-   */
+   
 
 }
