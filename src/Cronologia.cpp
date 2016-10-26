@@ -11,27 +11,27 @@
 
 using namespace std;
 
-Evento getDatos(string line){
-  vector<string> events;
-  int year = atoi(line.substr(0, 4).c_str());
-  line.erase(line.begin(), line.begin() + 4);
+Evento getDatos(const char* line){
+  char year [4];
+  for(int i=0; i < 4; i++){
+    year[i] = line[i];
+  }
 
-  // TODO: es raro a ver si se puede hacermejor
-  const char* cosa = line.c_str();
+  int year_t = atoi(year);
   string aux;
-  for(int i=0; i < line.length(); ++i){
-    if(cosa[i] != '#'){
-      char added = cosa[i];
-      aux += added;
-    } else {
-      events.push_back(aux);
-      //cout << aux << endl;
-      //events.push_back(aux);
+  vector<string> eventos;
+  
+  for(int i=5; line[i] != '\0'; ++i){
+    if(line[i] != '#'){
+      aux.push_back(line[i]);
+    }else{
+      //      cout << aux << endl;
+      eventos.push_back(aux);
       aux.clear();
     }
   }
-  
-  Evento result(year, events);
+
+  Evento result(year_t, eventos);
   return result;
 }
 
@@ -43,12 +43,13 @@ Evento getDatos(string line){
 Cronologia::Cronologia(char* file){
   ifstream toRead (file);
   string line;
-  Evento aux;
+  // Evento aux;
   while(!toRead.eof()){
     getline(toRead, line);
-    Evento aux(getDatos(line));
+    const char * line_c = line.c_str();
+    Evento aux = getDatos(line_c);
     this->cronologia.push_front(aux);
-    }
+  }
 }
 /**
    @brief Crea una nueva cronologia a partir de un vector de eventos
@@ -75,11 +76,15 @@ Cronologia::~Cronologia(){
 */
 vector<string> Cronologia::getDateEvents(int date){
   list<Evento>::iterator it = this->cronologia.begin();
-  for(it; it->getDate() <= date; ++it){
+  vector<string> ret;
+  bool _find = false;
+  for(it; it != this->cronologia.end() && !_find; ++it){
     if(it->getDate() == date){
-      return it->getEvents();
+      _find = true;
+      ret = it->getEvents();
     }
-  } 
+  }
+  return ret;
 }
 
 /**
@@ -161,14 +166,13 @@ ostream& operator<<(ostream& o, Cronologia& c){
   }
 
 istream& operator>>(istream& i, Cronologia& c){
+  char* line_s = new char[10000];
+
   while(!i.eof()){
-    char* line_s;
-    Cronologia aux;
-    i.getline(line_s, 1000);
-    string line = line_s;
-    aux.addEvent(getDatos(line));
-    c = aux;
-  }
+    i.getline(line_s, 10000);
+    //cout << line_s << endl;
+    c.addEvent(getDatos(line_s));
+    }
   return i;
 }
 
