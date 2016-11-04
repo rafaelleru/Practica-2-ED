@@ -9,7 +9,7 @@ CPPFLAGS = -Wall -g  -I$(INC) -c -std=c++11
 all: $(BIN)/pruebacronologia
 # ************ Generación de documentación ******************
 documentacion:
-	doxygen doc/doxys/Doxyfile
+	doxygen doc/Doxyfile
 
 # ************ Compilación de módulos ************
 $(BIN)/pruebacronologia: $(OBJ)/pruebacronologia.o

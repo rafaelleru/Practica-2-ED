@@ -22,9 +22,11 @@ int main(int argc, char * argv[]){
     Cronologia mi_cronologia;//(argv[1]);
 
     f>>mi_cronologia; //Cargamos en memoria, en el traductor.
-   
+
    int anio;
-   cout<<"Dime un año a consultar:";
+
+   while(anio != -1){
+   cout<<"Dime un año a consultar: [-1 para terminar]";
    cin >> anio;
    
    vector<string> eventos = mi_cronologia.getDateEvents(anio);
@@ -34,7 +36,7 @@ int main(int argc, char * argv[]){
    for (int i=0;i<eventos.size(); ++i)
      cout<<eventos[i]<<';';
    cout<<endl;
-
+   }
    
 
 }
